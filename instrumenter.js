@@ -190,6 +190,28 @@ function var_assignment(progObj) {
   return instObj;
 }
 
+function add_fun_call(progObj) {
+	let instObj = JSON.parse(JSON.stringify(progObj));
+	const index_f = progObj.body.findIndex(object => {
+		return object.type === "FunctionDeclaration" &&
+			   object.id.name === "f";
+	  });
+	let args = JSON.parse(JSON.stringify(progObj.body[index_f].expression.arguments));
+	instObj.body.push({
+		type: "ExpressionStatement",
+		expression: {
+		  type: "CallExpression",
+		  callee: {
+			type: "Identifier",
+			name: "f"
+		  },
+		  arguments: args,
+		  optional: false
+		}
+	  })
+	return instObj;
+}
+
 /**
  * The input file must have the function to be executed symbolically as f
  */
@@ -198,7 +220,7 @@ fs.readFile(argv.input, "utf-8", (err, data) => {
   try {
     let progObj = esprima.parseScript(data);
     /* Decorator to obtain the desired instrumented object */
-    let instObj = var_assignment(clean_mod_exp(progObj));
+    let instObj = add_fun_call(var_assignment(clean_mod_exp(progObj)));
     console.log(util.inspect(progObj, {showHidden: false, depth: null, colors: true}))
     console.log(ast2js(instObj));
   } catch (ex) {
