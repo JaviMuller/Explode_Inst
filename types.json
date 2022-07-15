@@ -1,0 +1,15 @@
+{
+    "fun": "f", 
+    "params": [
+        {
+            "name": "y", 
+            "type": "string"
+        }, 
+        {
+            "name": "x", 
+            "type": "number"
+
+        }
+    ]
+
+}
