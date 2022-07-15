@@ -1,0 +1,32 @@
+const esprima = require("esprima-next");
+const generate = require("escodegen").generate;
+
+function ast2js(obj) {
+    try {
+      const option = {
+        format: {
+          quotes: 'single',
+          indent: {
+            style: '\t'
+          }
+        }
+      };
+      return generate(obj, option);
+    } catch (err) {
+      if ((typeof obj) === "object") {
+        console.log("converting the following ast to str:\n" + e);
+      } else {
+        console.log("e is not an object!!!")
+      }
+      throw "ast2str failed.";
+    }
+  }
+
+  function str2ast (str) { 
+    var ast = parse (str); 
+    return ast.body[0].expression;
+  }
+  
+
+
+module.exports= {ast2js, str2ast}
