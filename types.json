@@ -1,14 +1,9 @@
 {
     "function": "f", 
-    "params": [
-        {
-            "name": "y", 
-            "type": "string"
-        }, 
+    "params": [ 
         {
             "name": "x", 
             "type": "number"
-
         }
     ]
 

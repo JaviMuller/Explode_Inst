@@ -23,7 +23,7 @@ const argv = yargs
 	.alias("help", "h").argv;
 
 function js2ast(data) {
-	return esprima.parseScript(data, { loc: true});
+	return esprima.parseScript(data, {loc: true});
 }
 
 fs.readFile(argv.input, "utf-8", (err, data) => {
