@@ -1,5 +1,5 @@
 {
-    "fun": "f", 
+    "function": "f", 
     "params": [
         {
             "name": "y", 

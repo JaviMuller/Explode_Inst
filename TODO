@@ -1,0 +1,6 @@
+Questões a resolver sobre o formato dos programas:
+	☐ Os evals, console.log, etc podem estar dentro de que tipo de blocos? Só if ou também for, while, etc.
+	☐ Mais consolas para além da default?
+
+Apontamentos:
+	☐ Os eval, console.log, etc. Podem estar a níveis de profundidade arbitrários de blocos dentro de f. É preciso fazer uma função que a partir do JSON, encontra o caminho de objectos que é preciso seguir para chegar a um eval/console.log a partir de f. -> Função genérica: encontrar o caminho que leva de um objecto com determinadas características até ao programa (esprima )

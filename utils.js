@@ -22,11 +22,11 @@ function ast2js(obj) {
     }
   }
 
-  function str2ast (str) { 
+  function js2ast (str) { 
     var ast = parse (str); 
     return ast.body[0].expression;
   }
   
 
 
-module.exports= {ast2js, str2ast}
+module.exports= {ast2js, js2ast}
