@@ -3,28 +3,26 @@ const js2ast = require("./utils").js2ast;
 
 
 /**
- * TODO: Interface specification pending
+ * TODO: Missing implementation
  * @param {Object} ast 
- * @param {Object} optim 
+ * @returns 
  */
-function remove_unused(ast, optim) { }
+function remove_unused(ast) {
+	return ast;
+}
 
-/**
- * TODO: Missing implementation!!!
- * @param {Object} ast 
- */
-function remove_module_exports(ast) {}
 
 /**
  * Add a test before each assert or console.log to see if input is safe (i.e. 
  * not symbolic)
- * @param {Object} ast_prog
+ * @param {Object} ast_prog - AST representation of js code
+ * @param {int} i - Number of the guarded eval/console.log
  */
-function eval_console_safeguard(ast_prog) {
+function generate_template(ast_prog) {
 	/* Mapping function (assume normalized program, i.e. eval/console.log only
-	have an argument) */
-	var i = 0;
-	function guard(ast) {
+	have an argument, module.exports only has variable/function names) */
+	var i = 0; /* Counter to generate variable names */
+	function f(ast) {
 		switch (ast.type) {
 			case "ExpressionStatement":
 				/* eval(<var>) */
@@ -50,11 +48,19 @@ function eval_console_safeguard(ast_prog) {
 					return js2ast(tmplt);
 				}
 				return null;
-			default: return null;
+			/* module.exports = {} */
+			case "ExpressionStatement":
+				if(ast.expression.type === "AssignemntExpression" && ast.expression.left.type === "MemberExpression" && ast.expression.left.object.name === "module" && ast.expression.left.property.name === "exports") {
+					return;
+				} else {
+					return null;
+				}
+			default: 
+				return null;
 		}
 	};
-	return mapJS(guard, ast_prog);
+	return mapJS(f, ast_prog);
 }
 
 
-module.exports = { remove_unused, remove_module_exports, eval_console_safeguard }
+module.exports = { remove_unused, generate_template }

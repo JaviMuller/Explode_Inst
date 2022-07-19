@@ -51,7 +51,7 @@ if (argv.optim) {
 	ast = template_gen.remove_unused(ast, optim);
 }
 // let ast = template_gen.remove_module_exports(ast);
-let test_template = template_gen.eval_console_safeguard(ast);
+let test_template = template_gen.generate_template(ast);
 
 
 /* Step 3 - Generate specific test */
@@ -69,5 +69,3 @@ if (argv.output) {
 } else {
 	console.log(test)
 }
-
-

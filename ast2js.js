@@ -62,4 +62,4 @@ fs.readFile(argv.input, "utf-8", (err, data) => {
 	}
 })
 
-module.exports = {ast2js}
+module.exports = { ast2js }

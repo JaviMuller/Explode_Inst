@@ -59,4 +59,4 @@ function generate_test(types, prog_tp) {
 	return symb_assignments.join() + ast2js(prog_tp) + '\n' + func_call;
 }
 
-module.exports = {generate_test};
+module.exports = { generate_test };
