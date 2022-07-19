@@ -35,6 +35,10 @@ function generate_template(ast_prog) {
 					let tmplt = `{var _instr_x${++i} = !is_symbiolic(${ast.expression.arguments[0].name});\nAssert(_instr_x${i});\nconsole.log(${ast.expression.arguments[0].name});};`
 					return js2ast(tmplt);
 				}
+				/* module.exports = {} */
+				if(ast.expression.type === "AssignmentExpression" && ast.expression.left.type === "MemberExpression" && ast.expression.left.object.name === "module" && ast.expression.left.property.name === "exports") {
+					return { type: "EmptyStatement" };
+				}
 				return null;
 			case "VariableDeclaration":
 				/* let <var> = eval(<var>) */				
@@ -48,13 +52,6 @@ function generate_template(ast_prog) {
 					return js2ast(tmplt);
 				}
 				return null;
-			/* module.exports = {} */
-			case "ExpressionStatement":
-				if(ast.expression.type === "AssignemntExpression" && ast.expression.left.type === "MemberExpression" && ast.expression.left.object.name === "module" && ast.expression.left.property.name === "exports") {
-					return;
-				} else {
-					return null;
-				}
 			default: 
 				return null;
 		}

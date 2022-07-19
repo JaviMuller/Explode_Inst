@@ -1,18 +1,13 @@
-var o = {}; 
-var param = symb_number(param); 
-var sth = symb(sth); 
-
-o.param = param; 
-o.sth = sth; 
-
-function f(o) {
-  if (o.param > 0) {
-	Assert(!is_symbolic(o.sth));
-	eval (o.sth)
-  } else {
-    Assume (false);
-	console.log("banana")
-  }
-}
-
-f(o);
+const f = function (o) {
+	const v1 = o.z;
+	const v2 = v1 > 0;
+	if (v2) {
+		 o.y = '2';
+		 const v3 = o.y;
+		 const v4 = o.w;
+		 const v5 = v3 + v4;
+		 const v6 = eval(v5);
+		 return v6;
+	}
+};
+module.exports = f;
