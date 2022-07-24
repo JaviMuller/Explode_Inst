@@ -17,16 +17,13 @@ const argv = yargs
 
 /* Step 1 - parse the program */
 let prog;
-fs.readFile(argv.input, "utf-8", (err, data) => {
-	if (err) throw err;
-	try {
-		prog = utils.js2ast(data);
-	}
-	catch (ex) {
-		console.log(ex.toString());
-	}
-})
 
+try {
+	prog = utils.js2ast(fs.readFileSync(argv.input, "utf-8"));
+}
+catch(err) {
+	console.log(err);
+}
 /* Step 2 - find function name and arguments (extract from module.exports) 
 Assume:
 	const name = function (<args>) {};
@@ -36,8 +33,8 @@ Assume:
 function exp_funct_name(ast) {
 	switch(ast.type) {
 		case "ExpressionStatement":
-			if(ast.expression.type === "AssignemntExpression" && ast.expression.left.type === "MemberExpression" && ast.expression.left.object.name === "module" && ast.expression.left.property.name === "exports") {
-				return ast.right.name;
+			if(ast.expression.type === "AssignmentExpression" && ast.expression.left.type === "MemberExpression" && ast.expression.left.object.name === "module" && ast.expression.left.property.name === "exports") {
+				return ast.expression.right.name;
 			} else {
 				return "";
 			}
