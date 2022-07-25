@@ -1,0 +1,9 @@
+ ☐ Change structure of instrumenter (replace types file for the config file, remove template library, do everything in a single one)
+
+ ☐ Parse the output of the instrumenter to remove nested block functions and empty statements
+
+ ☐ Change the safeguards to a desired list of functions (for member expressions, first substitute by the name of the corresponding variable)
+
+ ☐ Apply instrumentation to working and normalized tests (see js-cpg folder) @critical
+
+ ☐ Test instrumented auto with JaVerT @critical
