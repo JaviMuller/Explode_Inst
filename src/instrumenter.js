@@ -55,15 +55,12 @@ try {
  * console.log computation path
 */
 if (argv.optim) {
-	ast = template_gen.remove_unused(ast, optim);
+	ast = test_gen.remove_unused(ast, optim);
 }
-// let ast = template_gen.remove_module_exports(ast);
-let test_template = template_gen.generate_template(ast);
-
 
 /******************      Step 3 - Generate specific test      *****************/
 
-let test = generate_test(config, test_template);
+let test = generate_test(ast, config);
 
 
 /************************        Step 4 - output        ***********************/
