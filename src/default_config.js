@@ -9,8 +9,8 @@
  */
 const yargs = require("yargs");
 const fs = require("fs");
-const utils = require("./utils");
-const { map_reduceJS } = require("./js_mapper");
+const utils = require("../utils/js_ast_generation/ast_utils");
+const map_reduceJS = require("../utils/js_ast_manipulation/js_map_reduce");
 
 
 /**
@@ -93,13 +93,13 @@ var f = map_reduceJS(find_func, (d, ac) => d.concat(ac), prog, [])[0];
 /**
  * Return arguments as JSON strings
  */
-var args = f.params.map((s) => `{ \"var\": ${s.name} }`);
-args = args.join(',\t\t');
+var args = f.params.map((s) => `{ \"var\": \"${s.name}\" }`);
+args = args.join(',\n\t\t');
 
 
 /*************************       Step 3 - output       ************************/
 
-var config = `{\n\t\"function\": ${name}\n\t\"params\": [\n\t\t${args}\n\t]\n}`;
+var config = `{\n\t\"function\": \"${name}\",\n\t\"params\": [\n\t\t${args}\n\t]\n}`;
 
 if (argv.output) {
 	fs.writeFile(argv.output, config, err => {

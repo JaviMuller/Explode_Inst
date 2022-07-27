@@ -1,0 +1,7 @@
+{
+	"function": "f",
+	"params": [
+		{ "var": "source1" },
+		{ "var": "source2" }
+	]
+}

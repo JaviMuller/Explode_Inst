@@ -2,7 +2,7 @@
  * Library to generate the template for the symbolic test from the source JS
  */
 
-const mapJS = require("../js_mapper").mapJS;
+const mapJS = require("../utils/js_ast_manipulation/js_mapper");
 const js2ast = require("../utils/js_ast_generation/ast_utils").js2ast;
 
 
@@ -25,7 +25,7 @@ function remove_unused(ast) {
  * @param {Object} ast_prog - AST representation of js code
  * @param {int} i - Number of the guarded eval/console.log
  */
-function generate_template(ast_prog) {
+function sink_safeguard(ast_prog) {
 	/* Mapping function (assume normalized program, i.e. eval/console.log only
 	have an argument, module.exports only has variable/function names) */
 	var i = 0; /* Counter to generate variable names */

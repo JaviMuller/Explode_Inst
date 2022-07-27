@@ -38,8 +38,8 @@ const argv = yargs
 try {
 	var data = fs.readFileSync(argv.input, "utf-8");
 	var ast = utils.js2ast(data);
-	data = fs.readFileSync(argv.types, "utf-8");
-	var types = JSON.parse(data);
+	data = fs.readFileSync(argv.config, "utf-8");
+	var config = JSON.parse(data);
 	var optim;
 	if (argv.optim) {
 		data = fs.readFileSync(argv.optim, "utf-8");
@@ -49,7 +49,7 @@ try {
 	console.log(ex.toString())
 }
 
-/**************     Step 2 - generate symbolic test template     **************/
+/*****************       Step 2 (optional) optimization       *****************/
 
 /* TODO (Optimization) -> Remove all pieces of code not executed in the assert/
  * console.log computation path
@@ -63,7 +63,7 @@ let test_template = template_gen.generate_template(ast);
 
 /******************      Step 3 - Generate specific test      *****************/
 
-let test = generate_test(types, test_template);
+let test = generate_test(config, test_template);
 
 
 /************************        Step 4 - output        ***********************/

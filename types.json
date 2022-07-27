@@ -1,10 +1,10 @@
 {
    "function": "f", 
-   "params": [ 
-      {
-         "name": "x", 
-         "type": "number"
-      }
-   ]
+   "params": [ "x" ],
+	"vars": [
+		{
+			"name"
+		}
+	]
 
 }

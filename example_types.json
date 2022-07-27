@@ -1,0 +1,33 @@
+const { number } = require("yargs")
+
+f(o, k)
+o = {}
+o.x = x
+k.x =
+
+{
+	"function": "f",
+	"params": ["o", "k"],
+	"vars": [
+		{
+			"name": "o",
+			"type": "object"
+			"properties": [
+				{
+					"name": "x",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"name": "k",
+			"type": "object"
+			"properties": [
+				{
+					"name": "x",
+					"type": "string"
+				}
+			]
+		}
+	]
+}

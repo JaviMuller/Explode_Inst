@@ -11,24 +11,13 @@
  * object of the same type as **a**
  * @param {Object} p
  * An Esprima AST object representing an Expression, a Statement or a Script.
- * @param {Object} a 
+ * @param {Object} a
  * Accumulator of the reduce (applied to each node).
  * 
  * @returns an object which results from applying **f** to each node and 
  * reducing the results with **_f**
  */
-
-/**
- * 
- * @param {function} f - (p) => mapping function (applied to each AST element)
- * @param {function} _f - (ac) || (ac, a) => reducing function (applied to each
- * element with subelements to merge accumulators)
- * @param {Object} a - Initial value of accumulator (Applied to each element
- * with subelements!!!)
- * @param {Object} p - AST program to map_reduce
- * @returns 
- */
- function map_reduceJS(f, _f, p, a) {
+function map_reduceJS(f, _f, p, a) {
 	if (!p) return a;
 
 	switch (p.type) {

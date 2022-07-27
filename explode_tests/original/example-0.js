@@ -1,10 +1,5 @@
-/* testing taint from parameter to eval function call */
+// testing taint from parameter to eval function call
 
-var v = function f(x) {
-   let y = eval(x); 
-	return y;
+module.exports = function f(x) {
+	return eval(x);
 };
-
-module.exports = v;
-
-v(x);

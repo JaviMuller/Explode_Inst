@@ -1,4 +1,4 @@
-var x = symb_number(x);
+var o = symb(o);
 const f = function (o) {
 	const v1 = o.z;
 	const v2 = v1 > 0;
@@ -17,4 +17,4 @@ const f = function (o) {
 	}
 };
 ;
-f(x);
+f(o);
