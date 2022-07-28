@@ -20,7 +20,7 @@ function mapJS(f, p, fo) {
 	if (!p) return p;
 
 	if (fo === undefined) {
-		fo = function (x) {return x };
+		fo = function (x) {return x};
 	}
 
 	var ret = f(p);

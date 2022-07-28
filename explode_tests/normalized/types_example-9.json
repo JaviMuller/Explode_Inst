@@ -1,7 +1,17 @@
 {
+	"sink_types": ["eval"],
 	"function": "f",
-	"params": [
-		{ "var": "source1" },
-		{ "var": "source2" }
+	"params": ["source1", "source2"],
+	"vars": [
+		{
+			"name": "source1",
+			"type": "object",
+			"properties": [
+				{
+					"name": "x",
+					"type": "symbolic"
+				}
+			]
+		}
 	]
 }

@@ -1,6 +1,5 @@
 {
+	"sink_types": ["eval"],
 	"function": "f",
-	"params": [
-		
-	]
+	"params": []
 }

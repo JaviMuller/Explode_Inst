@@ -1,7 +1,15 @@
 {
+	"sink_types": ["console.log"],
 	"function": "f",
-	"params": [
-		{ "var": "p" },
-		{ "var": "t" }
+	"params": ["p", "t"],
+	"vars": [
+		{
+			"name": "p",
+			"type": "symbolic"
+		},
+		{
+			"name": "t",
+			"type": "symbolic"
+		}
 	]
 }

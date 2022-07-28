@@ -1,6 +1,11 @@
 {
+	"sink_types": ["eval"],
 	"function": "f",
-	"params": [
-		{ "var": "p" }
+	"params": ["p"],
+	"vars": [
+		{
+			"name": "p",
+			"type": "symbolic"
+		}
 	]
 }

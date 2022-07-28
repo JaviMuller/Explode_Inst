@@ -10,7 +10,7 @@
 const var_gen = require("../utils/variable_name_gen");
 const { js2ast, ast2js } = require("../utils/js_ast_generation/ast_utils");
 const map_reduceJS = require("../utils/js_ast_manipulation/js_map_reduce");
-
+const mapJS = require("../utils/js_ast_manipulation/js_mapper");
 
 /**
  * Auxiliary functions
@@ -27,13 +27,13 @@ const map_reduceJS = require("../utils/js_ast_manipulation/js_map_reduce");
  * @returns
  * 
  */
-function get_member_exp_sink_vars(ast, sink_types) {
+function get_member_exp_sink_vars(ast, sinks) {
 	function f(p) {
 		try {
 			switch (p.type) {
 				// var <var> = <obj>.<prop> => <var>
 				case "VariableDeclarator":
-					if(p.declarations[0].init.type === "MemberExpression" && sinks.some((e) => e === ast2js(p.declarations[0].init))) {
+					if(p.init.type === "MemberExpression" && sinks.some((e) => e === ast2js(p.init.callee))) {
 						return [p.id.name];
 					} else {
 						return [];
@@ -45,7 +45,7 @@ function get_member_exp_sink_vars(ast, sink_types) {
 			console.log("get_mem_exp_sink_vars: parameter is not an AST.");
 		}
 	}
-	return map_reduceJS(f, (d, ac) => d.push(ac), ast, []);
+	return map_reduceJS(f, (d, ac) => d.concat(ac), ast, []);
 }
 
 let fresh_symb_var = var_gen.fresh_symb_var_gen();
@@ -81,7 +81,7 @@ function remove_unused(prog, optim) {
  */
  function module_exp_rm_sink_safeguard(ast_prog, config) {
 	/* Replace member expression sinks with the corresponding variables */
-	var sinks = config.sink_types.concat(get_member_exp_sink_vars(ast_prog));
+	var sinks = config.sink_types.concat(get_member_exp_sink_vars(ast_prog, config.sink_types));
 	sinks = sinks.filter((e) => !(e.includes("."))); 
 
 	/* Mapping function  */

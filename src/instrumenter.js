@@ -11,8 +11,7 @@
 const yargs = require("yargs");
 const fs = require("fs");
 const utils = require("../utils/js_ast_generation/ast_utils");
-const generate_test = require("./test_gen").generate_test
-const template_gen = require("./template_gen")
+const test_gen = require("./test_gen")
 
 /**
  * Command line interface
@@ -60,7 +59,7 @@ if (argv.optim) {
 
 /******************      Step 3 - Generate specific test      *****************/
 
-let test = generate_test(ast, config);
+let test = test_gen.generate_test(ast, config);
 
 
 /************************        Step 4 - output        ***********************/
