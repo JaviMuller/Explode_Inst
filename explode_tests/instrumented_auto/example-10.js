@@ -1,4 +1,5 @@
-var p = symb(p);
+var instr_symb_0 = symb(instr_symb_0);
+
 const f = function (p) {
 	const a = [
 		0,
@@ -8,12 +9,12 @@ const f = function (p) {
 	a[0] = p;
 	const v1 = c[0];
 		{
-		var _instr_x1 = !is_symbolic(v1);
-		Assert(_instr_x1);
-		var v2 = eval(v1);
+		const instr_test_0 = !is_symbolic(v1);
+		Assert(instr_test_0);
+		const v2 = eval(v1);
 	}
 	;
 	return v2;
 };
 ;
-f(p);
+f(instr_symb_0);

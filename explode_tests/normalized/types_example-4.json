@@ -12,10 +12,6 @@
 					"type": "object",
 					"properties": [
 						{
-							"name": "a",
-							"type": "symbolic"
-						},
-						{
 							"name": "param",
 							"type": "symbolic"
 						}

@@ -27,15 +27,20 @@ const mapJS = require("../utils/js_ast_manipulation/js_mapper");
  * @returns
  * 
  */
-function get_member_exp_sink_vars(ast, sinks) {
+function get_additional_sinks(ast, sinks) {
 	function f(p) {
 		try {
 			switch (p.type) {
-				// var <var> = <obj>.<prop> => <var>
 				case "VariableDeclarator":
-					if(p.init.type === "MemberExpression" && sinks.some((e) => e === ast2js(p.init.callee))) {
+					// var <var> = <obj>
+					if(p.init.type === "Identifier" && sinks.some((e) => e === ast2js(p.init))) {
 						return [p.id.name];
-					} else {
+					} 
+					// car <var> = <obj>.<prop>
+					else if (p.init.type === "MemberExpression" && sinks.some((e) => e === ast2js(p.init))){
+						return [p.id.name];
+					}
+					else {
 						return [];
 					}
 				default:
@@ -81,24 +86,24 @@ function remove_unused(prog, optim) {
  */
  function module_exp_rm_sink_safeguard(ast_prog, config) {
 	/* Replace member expression sinks with the corresponding variables */
-	var sinks = config.sink_types.concat(get_member_exp_sink_vars(ast_prog, config.sink_types));
+	var sinks = config.sink_types.concat(get_additional_sinks(ast_prog, config.sink_types));
 	sinks = sinks.filter((e) => !(e.includes("."))); 
 
 	/* Mapping function  */
 	function f(ast) {
 		switch (ast.type) {
-			case "VariableDeclarator":
+			case "VariableDeclaration":
 				/* let <var> = <sink>(<var>) */
-				if (ast.init.type === "CallExpression" && sinks.some((e) => e === ast.init.callee.name)) {
+				if (ast.declarations[0].init.type === "CallExpression" && sinks.some((e) => e === ast.declarations[0].init.callee.name)) {
 					var test_var = fresh_test_var();
-					const arg_check = ast.init.arguments.map((e) => "const " + test_var + " = !is_symbolic(" + e + ");\n" +
+					const arg_check = ast.declarations[0].init.arguments.map((e) => "const " + test_var + " = !is_symbolic(" + ast2js(e) + ");\n" +
 						"Assert(" + test_var + ");\n");
 					return js2ast("{\n" + arg_check + ast2js(ast) + "};");
 				}
 				return null;
 			case "ExpressionStatement":
 				/* module.exports = {} */
-				if(ast.expression.type === "AssignmentExpression" && ast.expression.left.type === "MemberExpression" && ast.expression.left.object.name === "module" && ast.expression.left.property.name === "exports") {
+				if(ast.expression.type === "AssignmentExpression" && ast2js(ast.expression.left) === "module.exports") {
 					return { type: "EmptyStatement" };
 				}
 				return null;
@@ -136,9 +141,9 @@ function generate_symb_assignment(var_info) {
 			var properties_assignment = var_info.properties.map(generate_symb_assignment);
 			tmplt = tmplt.concat(
 				/* Templates of properties */
-				properties_assignment.map((p) => p.tmplt),
+				properties_assignment.map((p) => p.tmplt).join(''),
 				/* Assignments of properties to created vars */
-				properties_assignment.map((p, index) => `${name}.${var_info.properties[index].name} = ${p.name};\n`));
+				properties_assignment.map((p, index) => `${name}.${var_info.properties[index].name} = ${p.name};\n`).join(''));
 			return {name: name, tmplt: tmplt};
 
 		case "number":
@@ -197,7 +202,7 @@ function generate_test(prog, config) {
 	/* Parse the function call with the parameter names */
 	var func_call = `${config.function}(${param_names.toString()});\n`
 	/** Assignments + Program + Function Call */
-	return assignment_templates.join() + ast2js(parsed_prog) + '\n' + func_call;
+	return assignment_templates.join('') + '\n' + ast2js(parsed_prog) + '\n' + func_call;
 }
 
 module.exports = { remove_unused, generate_test };

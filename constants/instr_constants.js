@@ -19,3 +19,5 @@ const obj_prefix = instr_prefix + "obj_";
  * Symbolic test var prefix
  */
 const symb_test = instr_prefix + "test_";
+
+module.exports = { symb_prefix, symb_num_prefix, symb_str_prefix, symb_bool_prefix, concrete_prefix, obj_prefix, symb_test }

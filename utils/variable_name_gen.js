@@ -1,4 +1,4 @@
-instr_const = require("../constants/instr_constants");
+const instr_const = require("../constants/instr_constants");
 
 /**
  * Symbolic variable name generators:
@@ -57,6 +57,5 @@ let fresh_test_var_gen = function() {
 		return instr_const.symb_test + count++;
 	}
 }
-
 
 module.exports = { fresh_symb_var_gen, fresh_symb_num_var_gen, fresh_symb_str_var_gen, fresh_symb_bool_var_gen, fresh_concrete_var_gen, fresh_obj_var_gen, fresh_test_var_gen };

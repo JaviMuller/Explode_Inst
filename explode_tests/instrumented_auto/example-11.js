@@ -1,15 +1,16 @@
-var p = symb(p);
+var instr_symb_0 = symb(instr_symb_0);
+
 const f = function (p) {
 	const a = {};
 	a.b = p;
 	const c = a.b;
 		{
-		var _instr_x1 = !is_symbolic(c);
-		Assert(_instr_x1);
-		var v1 = eval(c);
+		const instr_test_0 = !is_symbolic(c);
+		Assert(instr_test_0);
+		const v1 = eval(c);
 	}
 	;
 	return v1;
 };
 ;
-f(p);
+f(instr_symb_0);

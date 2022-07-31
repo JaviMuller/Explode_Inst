@@ -1,4 +1,9 @@
-var o = symb(o);
+var instr_obj_0 = {};
+var instr_symb_0 = symb(instr_symb_0);
+var instr_symb_1 = symb(instr_symb_1);
+instr_obj_0.z = instr_symb_0;
+instr_obj_0.w = instr_symb_1;
+
 const f = function (o) {
 	const v1 = o.z;
 	const v2 = v1 > 0;
@@ -8,13 +13,13 @@ const f = function (o) {
 		const v4 = o.w;
 		const v5 = v3 + v4;
 				{
-			var _instr_x1 = !is_symbolic(v5);
-			Assert(_instr_x1);
-			var v6 = eval(v5);
+			const instr_test_0 = !is_symbolic(v5);
+			Assert(instr_test_0);
+			const v6 = eval(v5);
 		}
 		;
 		return v6;
 	}
 };
 ;
-f(o);
+f(instr_obj_0);
