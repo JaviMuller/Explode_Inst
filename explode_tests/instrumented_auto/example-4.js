@@ -8,13 +8,10 @@ const f = function (req) {
 	const x = req.body;
 	x.a = 2;
 	const v1 = x.param;
-		{
-		const instr_test_0 = !is_symbolic(v1);
-		Assert(instr_test_0);
-		const v2 = eval(v1);
-	}
-	;
+	const instr_test_0 = !is_symbolic(v1);
+	Assert(instr_test_0);
+	const v2 = eval(v1);
 	return v2;
 };
-;
+
 f(instr_obj_0);

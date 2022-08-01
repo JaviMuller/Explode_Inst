@@ -11,6 +11,8 @@ const var_gen = require("../utils/variable_name_gen");
 const { js2ast, ast2js } = require("../utils/js_ast_generation/ast_utils");
 const map_reduceJS = require("../utils/js_ast_manipulation/js_map_reduce");
 const mapJS = require("../utils/js_ast_manipulation/js_mapper");
+const format_pretty = require("../utils/format_pretty");
+const { parsed } = require("yargs");
 
 /**
  * Auxiliary functions
@@ -192,7 +194,7 @@ function generate_symb_assignment(var_info) {
  */
 function generate_test(prog, config) {
 	/* Remove module.exports and check if sink type is symbolic */
-	var parsed_prog = module_exp_rm_sink_safeguard(prog, config);
+	var parsed_prog = format_pretty(js2ast(ast2js(module_exp_rm_sink_safeguard(prog, config))));
 
 	var symbolic_assignments = config.vars.map(generate_symb_assignment);
 	/* Get function parameter names */
@@ -202,7 +204,7 @@ function generate_test(prog, config) {
 	/* Parse the function call with the parameter names */
 	var func_call = `${config.function}(${param_names.toString()});\n`
 	/** Assignments + Program + Function Call */
-	return assignment_templates.join('') + '\n' + ast2js(parsed_prog) + '\n' + func_call;
+	return assignment_templates.join('') + '\n' + ast2js(parsed_prog) + '\n\n' + func_call;
 }
 
 module.exports = { remove_unused, generate_test };

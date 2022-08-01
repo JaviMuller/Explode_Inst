@@ -12,14 +12,11 @@ const f = function (o) {
 		const v3 = o.y;
 		const v4 = o.w;
 		const v5 = v3 + v4;
-				{
-			const instr_test_0 = !is_symbolic(v5);
-			Assert(instr_test_0);
-			const v6 = eval(v5);
-		}
-		;
+		const instr_test_0 = !is_symbolic(v5);
+		Assert(instr_test_0);
+		const v6 = eval(v5);
 		return v6;
 	}
 };
-;
+
 f(instr_obj_0);

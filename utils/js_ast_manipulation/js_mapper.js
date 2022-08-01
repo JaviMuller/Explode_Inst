@@ -245,8 +245,8 @@ function mapJS(f, p, fo) {
 			})
 
 		case 'SwitchStatement':
-			var discriminant = mapJS(f, p.discriminant);
-			var cases = p.cases.map((s) => mapJS(f, s));
+			var discriminant = mapJS(f, p.discriminant, fo);
+			var cases = p.cases.map((s) => mapJS(f, s, fo));
 			return fo({
 				type: p.type,
 				discriminant: discriminant,
@@ -254,8 +254,8 @@ function mapJS(f, p, fo) {
 			})
 
 		case 'SwitchCase':
-			var test = mapJS(f, p.test);
-			var consequent = mapJS(f, p.consequent);
+			var test = mapJS(f, p.test, fo);
+			var consequent = mapJS(f, p.consequent, fo);
 			return fo({
 				type: p.type,
 				test: test,
@@ -263,9 +263,9 @@ function mapJS(f, p, fo) {
 			})
 
 		case 'TryStatement':
-			var block = mapJS(f, p.block);
-			var handler = mapJS(f, p.handler);
-			var finalizer = mapJS(f, p.finalizer);
+			var block = mapJS(f, p.block, fo);
+			var handler = mapJS(f, p.handler, fo);
+			var finalizer = mapJS(f, p.finalizer, fo);
 			return fo({
 				type: p.type,
 				block: block,
@@ -274,8 +274,8 @@ function mapJS(f, p, fo) {
 			})
 
 		case 'VariableDeclarator':
-			var id = mapJS(f, p.id);
-			var init = mapJS(f, p.init);
+			var id = mapJS(f, p.id, fo);
+			var init = mapJS(f, p.init, fo);
 			return fo({
 				type: p.type,
 				id: id,
@@ -283,8 +283,8 @@ function mapJS(f, p, fo) {
 			})
 
 		case 'WithStatement':
-			var object = mapJS(f, p.object);
-			var body = mapJS(f, p.body);
+			var object = mapJS(f, p.object, fo);
+			var body = mapJS(f, p.body, fo);
 			return fo({
 				type: p.type,
 				object: object,

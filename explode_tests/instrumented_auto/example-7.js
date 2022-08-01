@@ -5,13 +5,10 @@ const sanatize = function (s) {
 };
 const f = function (x) {
 	const v1 = sanatize(x);
-		{
-		const instr_test_0 = !is_symbolic(v1);
-		Assert(instr_test_0);
-		const v2 = eval(v1);
-	}
-	;
+	const instr_test_0 = !is_symbolic(v1);
+	Assert(instr_test_0);
+	const v2 = eval(v1);
 	return v2;
 };
-;
+
 f(instr_symb_0);
