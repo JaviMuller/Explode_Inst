@@ -4,7 +4,7 @@ This package serves to instrument normalized files outputted from js-cpg parser.
 
 ## Usage
 
-> node ./src/instrumenter.js -i <input_file_path> -c <config_file_path> [-o <output_file_path>]
+	node ./src/instrumenter.js -i <input_file_path> -c <config_file_path> [-o <output_file_path>]
 
 ## Dependencies
 
