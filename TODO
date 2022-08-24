@@ -1,7 +1,5 @@
  ☐ Apply instrumentation to working and normalized tests (see js-cpg folder) @critical
 
- ☐ Test instrumented auto with JaVerT @critical
+ ✔ Test instrumented auto with JaVerT @critical @done(22-08-24 16:23)
 
  ☐ Examples 8 and 9?
-
- ☐ Add optimization

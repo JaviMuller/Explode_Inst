@@ -295,6 +295,4 @@ function mapJS(f, p, fo) {
 	}
 }
 
-
-
 module.exports = mapJS;
