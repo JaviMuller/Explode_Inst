@@ -1,9 +1,7 @@
- ☐ Parse the output of the instrumenter to remove nested block functions and empty statements
-
  ☐ Apply instrumentation to working and normalized tests (see js-cpg folder) @critical
 
  ☐ Test instrumented auto with JaVerT @critical
 
  ☐ Examples 8 and 9?
 
- ☐ Assumir que a lista de vars sao os parametros da funcao source ou se nao, adicionar um campo que diz a que parametro correspondem?
+ ☐ Add optimization
