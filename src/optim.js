@@ -46,41 +46,6 @@ function block_unused_computation_paths(lines, acc, e) {
 	return acc;
 }
 
-/**
- * Remove unused computation paths (remove unused lines and add Assume(false))
- */
-function fo(lines, ast) {
-	switch(ast.type) {
-		case 'Program':
-			ast.body = ast.body.reduce(block_unused_computation_paths(lines))[0];
-			return ast;
-		case 'BlockStatement':
-			ast.body = ast.body.reduce(block_unused_computation_paths(lines))[0];
-			return ast;
-		case 'ConditionalExpression':
-		case 'IfStatement':
-			if(!executed(ast.consequent)) {
-				ast.consequent = js2ast('Assume(false);');
-			} else if(!executed(ast.alternate)) {
-				ast.alternate = js2ast('Assume(false);');
-			}
-			return ast;
-		case 'SwitchStatement':
-			ast.cases.reduce(block_unused_computation_paths(lines))[0];
-			return ast;
-		case 'TryStatement':
-			if(!executed(ast.handler)) {
-				ast.handler = js2ast('Assume(false);');
-			}
-			if(!executed(ast.finalizer)) {
-				ast.finalizer = js2ast('Assume(false);');
-			}
-			return ast;
-		default:
-			return ast;
-	}
-}
-
 function optimize(ast, lines) {
 	/**
 	 * Remove unused computation paths (remove unused lines and add Assume
@@ -89,10 +54,10 @@ function optimize(ast, lines) {
 	function fo(lines, ast) {
 		switch(ast.type) {
 			case 'Program':
-				ast.body = ast.body.reduce(block_unused_computation_paths(lines))[0];
+				ast.body = ast.body.reduce(block_unused_computation_paths(lines), [[], false])[0];
 				return ast;
 			case 'BlockStatement':
-				ast.body = ast.body.reduce(block_unused_computation_paths(lines))[0];
+				ast.body = ast.body.reduce(block_unused_computation_paths(lines), [[], false])[0];
 				return ast;
 			case 'ConditionalExpression':
 			case 'IfStatement':
@@ -103,7 +68,7 @@ function optimize(ast, lines) {
 				}
 				return ast;
 			case 'SwitchStatement':
-				ast.cases.reduce(block_unused_computation_paths(lines))[0];
+				ast.cases.reduce(block_unused_computation_paths(lines), [[], false])[0];
 				return ast;
 			case 'TryStatement':
 				if(!executed(ast.handler)) {
