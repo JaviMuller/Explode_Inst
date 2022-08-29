@@ -1,6 +1,6 @@
 # ExplodeInst - Symbolic test instrumentation for ExplodeJS
 
-This package serves to instrument normalized files outputted from js-cpg parser. It uses also the config file outputted from the same tool.
+This package serves to instrument normalized files outputted from js-cpg. It also uses the config file outputted from the same tool.
 
 ## Usage
 
@@ -12,3 +12,8 @@ This package serves to instrument normalized files outputted from js-cpg parser.
 	> esprima-next
 	> fs
 	> yargs
+
+## Format of Input Files
+
+The source files must come in a format in which each logic block is assigned to a unique variable, (e.g. return eval(x+y) => var a1 = x+y; var a2 = eval(a1); return a2).
+The config files specify which variables are symbolic (i.e. user controlled), the source function and its arguments and the sink types (e.g. eval, console.log, jquery.execute, ...). The config file might also include the executed lines for optimization (blocking unused computation paths).
