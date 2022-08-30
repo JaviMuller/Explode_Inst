@@ -5,7 +5,17 @@
 	"vars": [
 		{
 			"name": "path",
-			"type": "array"
+			"type": "object",
+			"properties": [
+				{
+					"name": "length",
+					"type": "number"
+				},
+				{
+					"name": "i",
+					"type": "symbolic"
+				}
+			]
 		},
 		{
 			"name": "value",

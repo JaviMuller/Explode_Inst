@@ -6,4 +6,4 @@
 
  Problems:
 	✔ How to detect if the symbolic attribute is an object with subattributes or a simple type object? -> Internal Structure (even of symbolic attributes) must be determined by the parser @done(22-08-30 11:47)
-	- Arrays will have all elements as symbolic.
+	- Arrays will have all elements as symbolic. -> Way to define the internal structure of arrays. All elemnts of a single type? Being able to specify that a given element has a given structure?

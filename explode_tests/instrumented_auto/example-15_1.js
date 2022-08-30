@@ -1,11 +1,9 @@
-var instr_array_0 = [];
+var instr_obj_0 = {};
+var instr_symb_num_0 = symb_number(instr_symb_num_0);
 var instr_symb_0 = symb(instr_symb_0);
-instr_array_0.push(instr_symb_0);
+instr_obj_0.length = instr_symb_num_0;
+instr_obj_0.i = instr_symb_0;
 var instr_symb_1 = symb(instr_symb_1);
-instr_array_0.push(instr_symb_1);
-var instr_symb_2 = symb(instr_symb_2);
-instr_array_0.push(instr_symb_2);
-var instr_symb_3 = symb(instr_symb_3);
 
 const f = function (path, value) {
 	obj = {};
@@ -26,4 +24,4 @@ const f = function (path, value) {
 	}
 };
 
-f(instr_array_0, instr_symb_3);
+f(instr_obj_0, instr_symb_1);
