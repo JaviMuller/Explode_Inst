@@ -12,6 +12,7 @@ const map_reduceJS = require("../utils/js_ast_manipulation/js_map_reduce");
 const mapJS = require("../utils/js_ast_manipulation/js_mapper");
 const format_pretty = require("../utils/format_pretty");
 const { parsed } = require("yargs");
+const instr_const = require("../constants/instr_constants");
 
 /**
  * Auxiliary functions
@@ -56,6 +57,7 @@ function get_additional_sinks(ast, sinks) {
 
 let fresh_symb_var = var_gen.fresh_symb_var_gen();
 let fresh_obj_var = var_gen.fresh_obj_var_gen();
+let fresh_array_var = var_gen.fresh_array_var_gen();
 let fresh_symb_num_var = var_gen.fresh_symb_num_var_gen();
 let fresh_symb_str_var = var_gen.fresh_symb_str_var_gen();
 let fresh_symb_bool_var = var_gen.fresh_symb_bool_var_gen();
@@ -146,6 +148,18 @@ function generate_symb_assignment(var_info) {
 				/* Assignments of properties to created vars */
 				properties_assignment.map((p, index) => `${name}.${var_info.properties[index].name} = ${p.name};\n`).join(''));
 			return {name: name, tmplt: tmplt};
+		
+		case "array":
+			// var var_name = [];
+			var name = fresh_array_var();
+			var tmplt = `var ${name} = [];\n`;
+			for(i = 0; i < instr_const.symb_array_length; ++i) {
+				var index = fresh_symb_var();
+				tmplt = tmplt.concat(`var ${index} = symb(${index});\n`,
+				`${name}.push(${index});\n`);
+			}
+			return {name: name, tmplt: tmplt}
+
 
 		case "number":
 			// var param_name = symb_number(param_name);

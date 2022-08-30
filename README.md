@@ -6,6 +6,10 @@ This package serves to instrument normalized files outputted from js-cpg. It als
 
 	node ./src/instrumenter.js -i <input_file_path> -c <config_file_path> [-o <output_file_path>]
 
+## Config constants
+
+The file ./constants/instr_constants.js contains some constants which can be altered to change the behaviour of the program such as the length of a symbolic generated array or the generated variable names' prefixes.
+
 ## Dependencies
 
 	> NodeJS
