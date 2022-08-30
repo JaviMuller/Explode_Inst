@@ -201,7 +201,7 @@ function generate_test(prog, config) {
 	/* Get assignment strings of symbolic variables and objects */
 	var assignment_templates = symbolic_assignments.map(e => e.tmplt);
 	/* Parse the function call with the parameter names */
-	var func_call = `${config.function}(${param_names.toString()});\n`
+	var func_call = `${config.function}(${param_names.join(", ")});\n`
 	/** Assignments + Program + Function Call */
 	return assignment_templates.join('') + '\n' + ast2js(parsed_prog) + '\n\n' + func_call;
 }

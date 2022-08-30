@@ -12,12 +12,12 @@ const f = function (p, t) {
     customer[v1] = t;
     const v2 = console.log;
     const v3 = customer.role;
-    const v4 = v2(`customer.role => ${ v3 }`);
+    const v4 = v2('customer.role => ' + v3);
     v4;
     const v5 = console.log;
     const v6 = customer.toString;
     const v7 = v6();
-    const v8 = v5(`toString implementation => ${ v7 }`);
+    const v8 = v5('toString implementation => ' + v7);
     v8;
 };
 module.exports = f;

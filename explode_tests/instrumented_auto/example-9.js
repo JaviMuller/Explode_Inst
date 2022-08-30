@@ -19,4 +19,4 @@ const f = function (source1, source2) {
 	return v5;
 };
 
-f(instr_symb_0,instr_symb_1);
+f(instr_symb_0, instr_symb_1);

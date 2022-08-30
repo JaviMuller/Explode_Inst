@@ -51,7 +51,6 @@ try {
 	var ast = utils.js2ast(data);
 	data = fs.readFileSync(argv.config, "utf-8");
 	var config = JSON.parse(data);
-	var optim;
 	if (argv.optim) {
 		data = fs.readFileSync(argv.optim, "utf-8");
 		optim = JSON.parse(data);

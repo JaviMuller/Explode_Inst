@@ -14,7 +14,7 @@ const f = function (key, subKey, subSubKey, subSubSubKey, value) {
     const v9 = v8.first;
     const v10 = v9.letter;
     const v11 = v10.morse;
-    const v12 = v7(`customer.name.first.letter.morse => ${ v11 }`);
+    const v12 = v7('customer.name.first.letter.morse => ' + v11);
     v12;
     const v13 = console.log;
     const v14 = customer.name;
@@ -22,7 +22,7 @@ const f = function (key, subKey, subSubKey, subSubSubKey, value) {
     const v16 = v15.letter;
     const v17 = v16.toString;
     const v18 = v17();
-    const v19 = v13(`toString implementation => ${ v18 }`);
+    const v19 = v13('toString implementation => ' + v18);
     v19;
     return customer;
 };

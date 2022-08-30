@@ -1,0 +1,27 @@
+{
+	"sink_types": ["console.log"],
+	"function": "f",
+	"params": ["key", "subKey", "subSubKey", "subSubSubKey", "value"],
+	"vars": [
+		{
+			"name": "key",
+			"type": "symbolic"
+		},
+		{
+			"name": "subKey",
+			"type": "symbolic"
+		},
+		{
+			"name": "subSubKey",
+			"type": "symbolic"
+		},
+		{
+			"name": "subSubSubKey",
+			"type": "symbolic"
+		},
+		{
+			"name": "value",
+			"type": "symbolic"
+		}
+	]
+}

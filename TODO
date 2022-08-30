@@ -1,5 +1,9 @@
  ☐ Apply instrumentation to working and normalized tests (see js-cpg folder) @critical
 
- ✔ Test instrumented auto with JaVerT @critical @done(22-08-24 16:23)
+ ☐ Test instrumented auto with JaVerT @critical
 
- ☐ Examples 8 and 9?
+ ☐ Examples 8, 9, 16 and 21?
+
+ Problems:
+	✔ How to detect if the symbolic attribute is an object with subattributes or a simple type object? -> Internal Structure (even of symbolic attributes) must be determined by the parser @done(22-08-30 11:47)
+	- Arrays will have all elements as symbolic.
