@@ -117,8 +117,6 @@ function remove_unused(prog, optim) {
 	return mapJS(f, ast_prog);
 }
 
-
-
 /**
  * Receives a function parameter object and returns the string corresponding to 
  * the declaration of that parameter as a symbolic variable of the specified 
@@ -153,10 +151,22 @@ function generate_symb_assignment(var_info) {
 			// var var_name = [];
 			var name = fresh_array_var();
 			var tmplt = `var ${name} = [];\n`;
-			for(i = 0; i < instr_const.symb_array_length; ++i) {
-				var index = fresh_symb_var();
-				tmplt = tmplt.concat(`var ${index} = symb(${index});\n`,
-				`${name}.push(${index});\n`);
+			var length = var_info.length ? var_info.length: instr_const.symb_array_length;
+			var specified;
+			var aux_assign;
+			var arr_el;
+			for(i = 0; i < length; ++i) {
+				if((specified = var_info.spec_element.findIndex((e) => e.index === i)) != -1) {
+					// Element structure is specified
+					aux_assign = generate_symb_assignment(var_info.spec_element[specified]);
+					
+				} else {
+					// Use default structure
+					aux_assign = generate_symb_assignment(def_elem);
+				}
+				tmplt.concat(aux_assign.tmplt);
+				arr_el = aux_assign.name;
+				tmplt = tmplt.concat(`${name}.push(${arr_el});\n`);
 			}
 			return {name: name, tmplt: tmplt}
 
@@ -173,10 +183,22 @@ function generate_symb_assignment(var_info) {
 			var tmplt = `var ${name} = symb_string(${name});\n`;
 			return {name:name, tmplt: tmplt};
 
+		case "prop_string":
+			/* Same as string, but assume it is not the default attributes 
+			"valueOf", "toString", "hasOwnProperty", "constructor" 
+			(mostly used to access attributes of objects) */
+			var name = fresh_symb_str_var();
+			var tmplt = `var ${name} = symb_string(${name});
+							 Assume(not(name = "valueOf"));
+							 Assume(not(name = "toString"));
+							 Assume(not(name = "hasOwnProperty"));
+							 Assume(not(name = "constructor"))'\n`;
+			return {name: name, tmplt: tmplt};
+
 		case "bool":
 			// var param_name = symb_bool(param_name);
 			var name = fresh_symb_bool_var();
-			var tmplt = `var ${var_info.name} = symb_bool(${var_info.name});\n`;
+			var tmplt = `var ${name} = symb_bool(${name});\n`;
 			return {name: name, tmplt: tmplt};
 
 		case "concrete":
@@ -184,10 +206,10 @@ function generate_symb_assignment(var_info) {
 			var tmplt;
 			if (var_info.value) {
 				// var param_name = <value>;
-				tmplt = `var ${var_info.name} = ${var_info.value};\n`;
-			} else {// same as symbolic
+				tmplt = `var ${name} = ${var_info.value};\n`;
+			} else {
 				//var param_name;
-				tmplt = `var ${var_info.name};\n`
+				tmplt = `var ${name};\n`
 			}
 			return {name: name, tmplt: tmplt };
 
@@ -208,16 +230,16 @@ function generate_symb_assignment(var_info) {
 function generate_test(prog, config) {
 	/* Remove module.exports and check if sink type is symbolic */
 	var parsed_prog = format_pretty(js2ast(ast2js(module_exp_rm_sink_safeguard(prog, config))));
-
-	var symbolic_assignments = config.vars.map(generate_symb_assignment);
+	/* Add definitions and assignments of the variables needed for the program */
+	var assignments = config.vars.map(generate_symb_assignment);
 	/* Get function parameter names */
-	var param_names = symbolic_assignments.map(e => e.name);
+	var param_names = assignments.map(e => e.name);
 	/* Get assignment strings of symbolic variables and objects */
-	var assignment_templates = symbolic_assignments.map(e => e.tmplt);
+	var assignment_templates = assignments.map(e => e.tmplt).join('');
 	/* Parse the function call with the parameter names */
 	var func_call = `${config.function}(${param_names.join(", ")});\n`
 	/** Assignments + Program + Function Call */
-	return assignment_templates.join('') + '\n' + ast2js(parsed_prog) + '\n\n' + func_call;
+	return assignment_templates + '\n' + ast2js(parsed_prog) + '\n\n' + func_call;
 }
 
 module.exports = { remove_unused, generate_test };

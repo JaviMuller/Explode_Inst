@@ -5,7 +5,9 @@
 	"vars": [
 		{
 			"name": "path",
-			"type": "array"
+			"type": "array",
+			"length": 1,
+			"def_element": "prop_string"
 		},
 		{
 			"name": "value",

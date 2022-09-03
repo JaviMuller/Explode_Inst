@@ -5,11 +5,11 @@
 	"vars": [
 		{
 			"name": "key",
-			"type": "symbolic"
+			"type": "prop_string"
 		},
 		{
 			"name": "subKey",
-			"type": "symbolic"
+			"type": "prop_string"
 		},
 		{
 			"name": "value",

@@ -1,0 +1,30 @@
+{
+	"sink_types": ["eval"],
+	"function": "f",
+	"params": ["path", "value"],
+	"vars": [
+		{
+			"name": "path",
+			"type": "array",
+			"def_elem": {
+				"type": "string"
+			},
+			"spec_elem": [
+				{
+					"index": 1,
+					"type": "object",
+					"properties": [
+						{
+							"name": "symb_prop_1",
+							"type": "symbolic"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "value",
+			"type": "symbolic"
+		}
+	]
+}

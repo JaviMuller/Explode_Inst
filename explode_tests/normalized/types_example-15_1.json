@@ -12,8 +12,8 @@
 					"type": "number"
 				},
 				{
-					"name": "i",
-					"type": "symbolic"
+					"name": "0",
+					"type": "prop_string"
 				}
 			]
 		},

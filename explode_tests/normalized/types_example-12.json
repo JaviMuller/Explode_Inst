@@ -15,7 +15,7 @@
 		},
 		{
 			"name": "p",
-			"type": "symbolic"
+			"type": "prop_string"
 		}
 	]
 }

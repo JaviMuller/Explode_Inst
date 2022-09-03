@@ -9,7 +9,7 @@
 		},
 		{
 			"name": "source2",
-			"type": "symbolic"
+			"type": "prop_string"
 		}
 	]
 }

@@ -5,19 +5,19 @@
 	"vars": [
 		{
 			"name": "key",
-			"type": "symbolic"
+			"type": "prop_string"
 		},
 		{
 			"name": "subKey",
-			"type": "symbolic"
+			"type": "prop_string"
 		},
 		{
 			"name": "subSubKey",
-			"type": "symbolic"
+			"type": "prop_string"
 		},
 		{
 			"name": "subSubSubKey",
-			"type": "symbolic"
+			"type": "prop_string"
 		},
 		{
 			"name": "value",
