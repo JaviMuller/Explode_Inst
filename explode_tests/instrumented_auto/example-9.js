@@ -1,5 +1,9 @@
-var instr_symb_0 = symb(instr_symb_0);
-var instr_symb_1 = symb(instr_symb_1);
+var source1__instr_symb_0 = symb(source1__instr_symb_0);
+var source2__instr_symb_str_0 = symb_string(source2__instr_symb_str_0);
+Assume(not(source2__instr_symb_str_0 = "valueOf"));
+Assume(not(source2__instr_symb_str_0 = "toString"));
+Assume(not(source2__instr_symb_str_0 = "hasOwnProperty"));
+Assume(not(source2__instr_symb_str_0 = "constructor"));
 
 const f = function (source1, source2) {
 	const Func = function () {
@@ -19,4 +23,4 @@ const f = function (source1, source2) {
 	return v5;
 };
 
-f(instr_symb_0, instr_symb_1);
+f(source1__instr_symb_0, source2__instr_symb_str_0);

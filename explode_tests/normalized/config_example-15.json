@@ -7,7 +7,9 @@
 			"name": "path",
 			"type": "array",
 			"length": 1,
-			"def_element": "prop_string"
+			"def_element": {
+				"type": "prop_string"
+			}
 		},
 		{
 			"name": "value",

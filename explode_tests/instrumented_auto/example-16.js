@@ -1,4 +1,4 @@
-var instr_symb_0 = symb(instr_symb_0);
+var x__instr_symb_0 = symb(x__instr_symb_0);
 
 const f = function (x) {
 	const instr_test_0 = !is_symbolic('' + x);
@@ -7,4 +7,4 @@ const f = function (x) {
 	return v1;
 };
 
-f(instr_symb_0);
+f(x__instr_symb_0);

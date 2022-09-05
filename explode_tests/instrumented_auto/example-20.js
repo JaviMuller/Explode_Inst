@@ -1,5 +1,13 @@
-var instr_symb_0 = symb(instr_symb_0);
-var instr_symb_1 = symb(instr_symb_1);
+var p__instr_symb_str_0 = symb_string(p__instr_symb_str_0);
+Assume(not(p__instr_symb_str_0 = "valueOf"));
+Assume(not(p__instr_symb_str_0 = "toString"));
+Assume(not(p__instr_symb_str_0 = "hasOwnProperty"));
+Assume(not(p__instr_symb_str_0 = "constructor"));
+var t__instr_symb_str_1 = symb_string(t__instr_symb_str_1);
+Assume(not(t__instr_symb_str_1 = "valueOf"));
+Assume(not(t__instr_symb_str_1 = "toString"));
+Assume(not(t__instr_symb_str_1 = "hasOwnProperty"));
+Assume(not(t__instr_symb_str_1 = "constructor"));
 
 const f = function (p, t) {
 	let customer = {};
@@ -22,4 +30,4 @@ const f = function (p, t) {
 	return customer;
 };
 
-f(instr_symb_0, instr_symb_1);
+f(p__instr_symb_str_0, t__instr_symb_str_1);

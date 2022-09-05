@@ -1,8 +1,8 @@
-var instr_obj_0 = {};
-var instr_obj_1 = {};
-var instr_symb_0 = symb(instr_symb_0);
-instr_obj_1.param = instr_symb_0;
-instr_obj_0.body = instr_obj_1;
+var req__instr_obj_0 = {};
+var body__instr_obj_1 = {};
+var param__instr_symb_0 = symb(param__instr_symb_0);
+body__instr_obj_1.param = param__instr_symb_0;
+req__instr_obj_0.body = body__instr_obj_1;
 
 const f = function (req) {
 	const x = req.body;
@@ -14,4 +14,4 @@ const f = function (req) {
 	return v2;
 };
 
-f(instr_obj_0);
+f(req__instr_obj_0);

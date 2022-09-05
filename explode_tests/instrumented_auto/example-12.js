@@ -1,7 +1,11 @@
-var instr_obj_0 = {};
-var instr_symb_0 = symb(instr_symb_0);
-instr_obj_0.symb_prop_1 = instr_symb_0;
-var instr_symb_1 = symb(instr_symb_1);
+var c__instr_obj_0 = {};
+var symb_prop_1__instr_symb_0 = symb(symb_prop_1__instr_symb_0);
+c__instr_obj_0.symb_prop_1 = symb_prop_1__instr_symb_0;
+var p__instr_symb_str_0 = symb_string(p__instr_symb_str_0);
+Assume(not(p__instr_symb_str_0 = "valueOf"));
+Assume(not(p__instr_symb_str_0 = "toString"));
+Assume(not(p__instr_symb_str_0 = "hasOwnProperty"));
+Assume(not(p__instr_symb_str_0 = "constructor"));
 
 const f = function (c, p) {
 	let x = c[p];
@@ -11,4 +15,4 @@ const f = function (c, p) {
 	return v1;
 };
 
-f(instr_obj_0, instr_symb_1);
+f(c__instr_obj_0, p__instr_symb_str_0);

@@ -1,8 +1,24 @@
-var instr_symb_0 = symb(instr_symb_0);
-var instr_symb_1 = symb(instr_symb_1);
-var instr_symb_2 = symb(instr_symb_2);
-var instr_symb_3 = symb(instr_symb_3);
-var instr_symb_4 = symb(instr_symb_4);
+var key__instr_symb_str_0 = symb_string(key__instr_symb_str_0);
+Assume(not(key__instr_symb_str_0 = "valueOf"));
+Assume(not(key__instr_symb_str_0 = "toString"));
+Assume(not(key__instr_symb_str_0 = "hasOwnProperty"));
+Assume(not(key__instr_symb_str_0 = "constructor"));
+var subKey__instr_symb_str_1 = symb_string(subKey__instr_symb_str_1);
+Assume(not(subKey__instr_symb_str_1 = "valueOf"));
+Assume(not(subKey__instr_symb_str_1 = "toString"));
+Assume(not(subKey__instr_symb_str_1 = "hasOwnProperty"));
+Assume(not(subKey__instr_symb_str_1 = "constructor"));
+var subSubKey__instr_symb_str_2 = symb_string(subSubKey__instr_symb_str_2);
+Assume(not(subSubKey__instr_symb_str_2 = "valueOf"));
+Assume(not(subSubKey__instr_symb_str_2 = "toString"));
+Assume(not(subSubKey__instr_symb_str_2 = "hasOwnProperty"));
+Assume(not(subSubKey__instr_symb_str_2 = "constructor"));
+var subSubSubKey__instr_symb_str_3 = symb_string(subSubSubKey__instr_symb_str_3);
+Assume(not(subSubSubKey__instr_symb_str_3 = "valueOf"));
+Assume(not(subSubSubKey__instr_symb_str_3 = "toString"));
+Assume(not(subSubSubKey__instr_symb_str_3 = "hasOwnProperty"));
+Assume(not(subSubSubKey__instr_symb_str_3 = "constructor"));
+var value__instr_symb_0 = symb(value__instr_symb_0);
 
 const f = function (key, subKey, subSubKey, subSubSubKey, value) {
 	const v1 = { morse: '.__.' };
@@ -37,4 +53,4 @@ const f = function (key, subKey, subSubKey, subSubSubKey, value) {
 	return customer;
 };
 
-f(instr_symb_0, instr_symb_1, instr_symb_2, instr_symb_3, instr_symb_4);
+f(key__instr_symb_str_0, subKey__instr_symb_str_1, subSubKey__instr_symb_str_2, subSubSubKey__instr_symb_str_3, value__instr_symb_0);

@@ -1,4 +1,4 @@
-var instr_symb_0 = symb(instr_symb_0);
+var y__instr_symb_0 = symb(y__instr_symb_0);
 
 const f = function (y) {
 	let x = {};
@@ -10,4 +10,4 @@ const f = function (y) {
 	return v2;
 };
 
-f(instr_symb_0);
+f(y__instr_symb_0);

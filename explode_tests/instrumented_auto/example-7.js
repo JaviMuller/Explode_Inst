@@ -1,4 +1,4 @@
-var instr_symb_0 = symb(instr_symb_0);
+var x__instr_symb_0 = symb(x__instr_symb_0);
 
 const sanatize = function (s) {
 	return s;
@@ -11,4 +11,4 @@ const f = function (x) {
 	return v2;
 };
 
-f(instr_symb_0);
+f(x__instr_symb_0);

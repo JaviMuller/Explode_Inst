@@ -1,8 +1,8 @@
-var instr_obj_0 = {};
-var instr_symb_0 = symb(instr_symb_0);
-var instr_symb_1 = symb(instr_symb_1);
-instr_obj_0.z = instr_symb_0;
-instr_obj_0.w = instr_symb_1;
+var o__instr_obj_0 = {};
+var z__instr_symb_0 = symb(z__instr_symb_0);
+var w__instr_symb_1 = symb(w__instr_symb_1);
+o__instr_obj_0.z = z__instr_symb_0;
+o__instr_obj_0.w = w__instr_symb_1;
 
 const f = function (o) {
 	const v1 = o.z;
@@ -19,4 +19,4 @@ const f = function (o) {
 	}
 };
 
-f(instr_obj_0);
+f(o__instr_obj_0);

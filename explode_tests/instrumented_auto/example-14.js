@@ -1,6 +1,14 @@
-var instr_symb_0 = symb(instr_symb_0);
-var instr_symb_1 = symb(instr_symb_1);
-var instr_symb_2 = symb(instr_symb_2);
+var key__instr_symb_str_0 = symb_string(key__instr_symb_str_0);
+Assume(not(key__instr_symb_str_0 = "valueOf"));
+Assume(not(key__instr_symb_str_0 = "toString"));
+Assume(not(key__instr_symb_str_0 = "hasOwnProperty"));
+Assume(not(key__instr_symb_str_0 = "constructor"));
+var subKey__instr_symb_str_1 = symb_string(subKey__instr_symb_str_1);
+Assume(not(subKey__instr_symb_str_1 = "valueOf"));
+Assume(not(subKey__instr_symb_str_1 = "toString"));
+Assume(not(subKey__instr_symb_str_1 = "hasOwnProperty"));
+Assume(not(subKey__instr_symb_str_1 = "constructor"));
+var value__instr_symb_0 = symb(value__instr_symb_0);
 
 const f = function (key, subKey, value) {
 	const v1 = { first: 'person' };
@@ -19,4 +27,4 @@ const f = function (key, subKey, value) {
 	return customer;
 };
 
-f(instr_symb_0, instr_symb_1, instr_symb_2);
+f(key__instr_symb_str_0, subKey__instr_symb_str_1, value__instr_symb_0);

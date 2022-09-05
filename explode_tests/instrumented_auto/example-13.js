@@ -1,5 +1,5 @@
-var instr_symb_0 = symb(instr_symb_0);
-var instr_symb_1 = symb(instr_symb_1);
+var e__instr_symb_0 = symb(e__instr_symb_0);
+var x__instr_symb_1 = symb(x__instr_symb_1);
 
 const f = function (e, x) {
 	const v2 = e === 1;
@@ -12,4 +12,4 @@ const f = function (e, x) {
 	}
 };
 
-f(instr_symb_0, instr_symb_1);
+f(e__instr_symb_0, x__instr_symb_1);

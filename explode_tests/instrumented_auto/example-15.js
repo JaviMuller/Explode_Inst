@@ -1,11 +1,11 @@
-var instr_array_0 = [];
-var instr_symb_0 = symb(instr_symb_0);
-instr_array_0.push(instr_symb_0);
-var instr_symb_1 = symb(instr_symb_1);
-instr_array_0.push(instr_symb_1);
-var instr_symb_2 = symb(instr_symb_2);
-instr_array_0.push(instr_symb_2);
-var instr_symb_3 = symb(instr_symb_3);
+var path__instr_array_0 = [];
+var instr_symb_str_0 = symb_string(instr_symb_str_0);
+Assume(not(instr_symb_str_0 = "valueOf"));
+Assume(not(instr_symb_str_0 = "toString"));
+Assume(not(instr_symb_str_0 = "hasOwnProperty"));
+Assume(not(instr_symb_str_0 = "constructor"));
+path__instr_array_0.push(instr_symb_str_0);
+var value__instr_symb_0 = symb(value__instr_symb_0);
 
 const f = function (path, value) {
 	obj = {};
@@ -26,4 +26,4 @@ const f = function (path, value) {
 	}
 };
 
-f(instr_array_0, instr_symb_3);
+f(path__instr_array_0, value__instr_symb_0);

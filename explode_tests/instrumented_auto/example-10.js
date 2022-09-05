@@ -1,4 +1,4 @@
-var instr_symb_0 = symb(instr_symb_0);
+var p__instr_symb_0 = symb(p__instr_symb_0);
 
 const f = function (p) {
 	const a = [
@@ -14,4 +14,4 @@ const f = function (p) {
 	return v2;
 };
 
-f(instr_symb_0);
+f(p__instr_symb_0);
